@@ -31,7 +31,7 @@ services:
     image: quay.io/reconmap/web-client:master
     restart: unless-stopped
     volumes:
-      - ./environment.js:/usr/share/nginx/html/environment.js:ro
+      - /data/compose/reconmap/environment.js:/usr/share/nginx/html/environment.js:ro
     ports:
       - 5500:5500
 
@@ -40,9 +40,9 @@ services:
     image: quay.io/reconmap/rest-api:latest
     restart: unless-stopped
     volumes:
-      - ./config.json:/var/www/webapp/config.json
-      - ./logs:/var/www/webapp/logs/
-      - ./data:/var/www/webapp/data/
+      - /data/compose/reconmap/config.json:/var/www/webapp/config.json
+      - /data/compose/reconmap/logs:/var/www/webapp/logs/
+      - /data/compose/reconmap/data:/var/www/webapp/data/
     ports:
       - 5510:5510
     environment:
